@@ -5,13 +5,13 @@ export type TabNavigationType = {
   QTwo: undefined;
 };
 export type NavigationStackProps = NativeStackScreenProps<
-  TabNavigationType,
-  'QOne'
+  StackNavigationType,
+  'Tabs'
 >;
 export type NavigationProps = {
   navigation: NavigationStackProps['navigation'];
 };
 export type StackNavigationType = {
   VideoList: undefined;
-  Router: TabNavigationType;
+  Tabs: TabNavigationType;
 };

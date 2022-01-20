@@ -11,12 +11,12 @@ export default function Navigation() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Router"
+        initialRouteName="Tabs"
         screenOptions={{
           headerShown: false,
           animation: 'slide_from_right',
         }}>
-        <Stack.Screen name="Router" component={TabView} />
+        <Stack.Screen name="Tabs" component={TabView} />
         <Stack.Group
           screenOptions={{
             presentation: 'transparentModal',
