@@ -1,14 +1,14 @@
 import React, {memo} from 'react';
-import {StyleSheet, View} from 'react-native';
+import {Image, StyleSheet, View} from 'react-native';
 import {IItem} from 'redux/store/youtube/types';
-import {VideoItemHeight} from 'utils/constants';
+import {appPadding, VideoItemHeight} from 'utils/constants';
 import {ListItem} from './listItem';
-import {Avatar} from './Thumbnail';
 
 const Item = memo(({item}: {item: IItem}) => {
+  const thumbnail = item.snippet?.thumbnails?.default?.url;
   return (
     <View style={styles.container}>
-      <Avatar medium={item.snippet?.thumbnails?.default} />
+      <Image source={thumbnail ? {uri: thumbnail} : {}} style={styles.image} />
       <ListItem snippet={item.snippet} />
     </View>
   );
@@ -23,5 +23,12 @@ const styles = StyleSheet.create({
     width: '100%',
     marginBottom: 8,
     flexDirection: 'row',
+  },
+  image: {
+    width: 120,
+    paddingRight: appPadding / 2,
+    height: '100%',
+    backgroundColor: '#000',
+    borderRadius: 8,
   },
 });
