@@ -10,7 +10,9 @@ import {
 } from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {appPadding, colors, isIOS, normalize, spacing} from 'utils/constants';
-
+type HeaderType = {
+  title: string;
+};
 const HEADER_HEIGHT = isIOS ? 44 : 56;
 export function Header({title}: HeaderType) {
   const pending = useAppSelector(state => state.youtube.pending);
@@ -27,9 +29,8 @@ export function Header({title}: HeaderType) {
           <Text style={styles.close}>X</Text>
         </Pressable>
 
-        {title ? (
-          <Text style={[styles.text]}>{title.toLocaleUpperCase('en')}</Text>
-        ) : null}
+        <Text style={[styles.text]}>{title.toLocaleUpperCase('en')}</Text>
+
         <View style={styles.defaultIcon}>
           {pending && (
             <ActivityIndicator color={colors.primary} size={'large'} />
@@ -77,13 +78,3 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 });
-type HeaderType = {
-  title?: string;
-  isDark?: boolean;
-  style?: object;
-  iconColor?: string;
-  rightComponent?: React.ReactElement;
-  leftComponent?: React.ReactElement;
-  showBack?: boolean;
-  onPressBack?: Function | null;
-};
