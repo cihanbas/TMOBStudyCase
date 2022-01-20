@@ -3,7 +3,6 @@ import {NativeStackScreenProps} from '@react-navigation/native-stack';
 export type TabNavigationType = {
   QOne: undefined;
   QTwo: undefined;
-  QThree: undefined;
 };
 export type NavigationStackProps = NativeStackScreenProps<
   TabNavigationType,
@@ -11,4 +10,8 @@ export type NavigationStackProps = NativeStackScreenProps<
 >;
 export type NavigationProps = {
   navigation: NavigationStackProps['navigation'];
+};
+export type StackNavigationType = {
+  VideoList: undefined;
+  Router: TabNavigationType;
 };
