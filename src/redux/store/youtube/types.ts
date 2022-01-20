@@ -58,20 +58,12 @@ export interface IThumbnailData {
   height: number;
 }
 //?:  Fetch Request TYPE
-export interface FetchMoreVideoRequest {
-  type: typeof YoutubeTypes.GET_MORE_VIDEO_REQUEST;
-  payload: IVideoListParam;
-}
+
 export interface FetchVideoListRequest {
   type: typeof YoutubeTypes.GET_LIST_REQUEST;
   payload: IVideoListParam;
 }
 
-//?: FETCH MORE VIDEO SUCCESS TYPE
-export type FetchMoreVideoRSuccess = {
-  type: typeof YoutubeTypes.GET_MORE_VIDEO_SUCCESS;
-  payload: FetchYoutubeListSuccessPayload;
-};
 //?: FETCH SUCCESS TYPE
 export type FetchYoutubeListSuccess = {
   type: typeof YoutubeTypes.GET_LIST_SUCCESS;
@@ -87,6 +79,4 @@ export type FetchYoutubeListFailure = {
 export type YoutubeListActions =
   | FetchVideoListRequest
   | FetchYoutubeListSuccess
-  | FetchMoreVideoRequest
-  | FetchMoreVideoRSuccess
   | FetchYoutubeListFailure;

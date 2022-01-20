@@ -18,8 +18,9 @@ export const VideoListScreen = () => {
   const [items, setitems] = useState([]);
   const [count, setCount] = useState(0);
 
-  const insets = useSafeAreaInsets();
   const dispatch = useAppDispatch();
+  const insets = useSafeAreaInsets();
+
   const keyExtractor = useCallback((item: IItem) => `${item.id.videoId}`, []);
   const renderItem = useCallback(({item}) => <Item item={item} />, []);
   const getItemLayout = useCallback(
@@ -46,10 +47,10 @@ export const VideoListScreen = () => {
   }, [DATA]);
 
   const changeData = () => {
-    //! Bir onceki listede gelen itemlar gelebiliyor
+    //! Bir onceki listede gelen itemlar tekrar gelebiliyor
     //! ve key'ler ayni oldugu zaman performans kaybi olusuyor
-    //! bunu onlemek icin sayfa bazli gelen pageToken ile id'ler bagldastirildi
-    const newItems = DATA.data?.items.map((item, index) => {
+    //! bunu onlemek icin sayfa bazli gelen pageToken ile id'ler birlestirildi
+    const newItems = DATA.data?.items.map(item => {
       item.id.videoId = item.id.videoId + DATA.data?.nextPageToken;
       return item;
     });

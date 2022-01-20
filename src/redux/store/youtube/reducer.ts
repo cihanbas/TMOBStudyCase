@@ -1,4 +1,3 @@
-import {IItem} from 'redux/store/youtube/types';
 import {YoutubeTypes} from './actionTypes';
 import {VideoListState, YoutubeListActions} from './types';
 
