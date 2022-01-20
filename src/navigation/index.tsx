@@ -1,31 +1,30 @@
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
-import {TabNavigationType} from 'navigation/model';
-import {QOne, QTwo, QThree} from 'questions';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {StackNavigationType} from 'navigation/model';
+import {TabView} from 'navigation/tabs';
 import * as React from 'react';
-import {StyleSheet} from 'react-native';
+import {VideoListScreen} from 'screens';
 
-const Tab = createBottomTabNavigator<TabNavigationType>();
+const Stack = createNativeStackNavigator<StackNavigationType>();
 
 export default function Navigation() {
   return (
     <NavigationContainer>
-      <Tab.Navigator
+      <Stack.Navigator
+        initialRouteName="Router"
         screenOptions={{
-          tabBarIcon: () => undefined,
-          tabBarLabelStyle: styles.labelStyles,
+          headerShown: false,
+          animation: 'slide_from_right',
         }}>
-        <Tab.Screen name="QOne" component={QOne} />
-        <Tab.Screen name="QTwo" component={QTwo} />
-        <Tab.Screen name="QThree" component={QThree} />
-      </Tab.Navigator>
+        <Stack.Screen name="Router" component={TabView} />
+        <Stack.Group
+          screenOptions={{
+            presentation: 'transparentModal',
+            animation: 'slide_from_bottom',
+          }}>
+          <Stack.Screen name="VideoList" component={VideoListScreen} />
+        </Stack.Group>
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  labelStyles: {
-    color: 'red',
-    fontSize: 18,
-  },
-});
