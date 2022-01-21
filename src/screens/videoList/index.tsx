@@ -15,7 +15,7 @@ import {appPadding, colors, VideoItemHeight} from 'utils/constants';
 
 export const VideoListScreen: React.FC = () => {
   const DATA: VideoListState = useAppSelector(state => state.youtube);
-  const [items, setitems] = useState([]);
+  const [items, setitems] = useState<IItem[]>([]);
   const [count, setCount] = useState(0);
 
   const dispatch = useAppDispatch();
@@ -35,7 +35,7 @@ export const VideoListScreen: React.FC = () => {
   const getMoreVideo = () => {
     if (!_.isEmpty(DATA.coordinate)) {
       const payload: IVideoListParam = {
-        ...DATA.coordinate,
+        ...DATA.coordinate!,
       };
       dispatch(fetchVideoByCoordRequest(payload));
     }
@@ -50,14 +50,15 @@ export const VideoListScreen: React.FC = () => {
     //! Bir onceki listede gelen itemlar tekrar gelebiliyor
     //! ve key'ler ayni oldugu zaman performans kaybi olusuyor
     //! bunu onlemek icin sayfa bazli gelen pageToken ile id'ler birlestirildi
-    const newItems = DATA.data?.items.map(item => {
-      item.id.videoId = item.id.videoId + DATA.data?.nextPageToken;
-      return item;
-    });
-
-    if (newItems) {
-      setitems([...items, ...newItems]);
-      setCount(count ? count + 10 : 10);
+    if (DATA.data) {
+      const newItems = DATA.data?.items.map(item => {
+        item.id.videoId = item.id.videoId + DATA.data?.nextPageToken;
+        return item;
+      });
+      if (newItems) {
+        setitems([...items, ...newItems]);
+        setCount(count ? count + 10 : 10);
+      }
     }
   };
   return (
