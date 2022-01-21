@@ -8,7 +8,7 @@ const colors = {
   black: 'black',
 };
 export const spacing = [0, 4, 8, 12, 16, 24, 32, 48, 64];
-const youtubeAPIKEY = 'AIzaSyBYx06ljYCbidxklTUsj3irXhCfSta0WBM';
+const youtubeAPIKEY = 'AIzaSyAJjmdEcftA9Z2TJpEeWBOBS7ZjsxIjGSA';
 
 function normalize(number: number, factor = 0.25) {
   return moderateScale(number, factor);
