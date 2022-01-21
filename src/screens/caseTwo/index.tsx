@@ -5,12 +5,8 @@ import {StyleSheet} from 'react-native';
 import MapView from 'react-native-maps';
 import {fetchVideoByCoordRequest} from 'redux/store/youtube/actions';
 import {IVideoListParam} from 'redux/store/youtube/types';
-const initialRegion = {
-  latitude: 39.930273,
-  longitude: 32.856041,
-  latitudeDelta: 0.0922,
-  longitudeDelta: 0.0421,
-};
+import {initialRegion} from 'utils/constants';
+
 export const QTwoThree: React.FC<NavigationProps> = ({
   navigation,
 }: NavigationProps) => {

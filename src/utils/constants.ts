@@ -17,4 +17,18 @@ const isIOS = Platform.OS === 'ios';
 
 const appPadding = normalize(spacing[5]);
 const VideoItemHeight = 100;
-export {colors, normalize, appPadding, youtubeAPIKEY, isIOS, VideoItemHeight};
+const initialRegion = {
+  latitude: 39.930273,
+  longitude: 32.856041,
+  latitudeDelta: 0.0922,
+  longitudeDelta: 0.0421,
+};
+export {
+  colors,
+  normalize,
+  appPadding,
+  youtubeAPIKEY,
+  isIOS,
+  VideoItemHeight,
+  initialRegion,
+};
