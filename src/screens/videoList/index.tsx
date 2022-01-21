@@ -13,7 +13,7 @@ import {
 } from 'redux/store/youtube/types';
 import {appPadding, colors, VideoItemHeight} from 'utils/constants';
 
-export const VideoListScreen = () => {
+export const VideoListScreen: React.FC = () => {
   const DATA: VideoListState = useAppSelector(state => state.youtube);
   const [items, setitems] = useState([]);
   const [count, setCount] = useState(0);
