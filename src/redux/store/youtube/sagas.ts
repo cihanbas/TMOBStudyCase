@@ -2,7 +2,7 @@ import {all, call, put, takeLatest} from 'redux-saga/effects';
 import {
   FetchVideoListRequestPayload,
   FetchYoutubeListSuccessPayload,
-} from 'redux/store/youtube/types';
+} from './types';
 import api from 'services/endPoints';
 import {fetchVideoByCoordFailure, fetchVideoByCoordSuccess} from './actions';
 import {YoutubeTypes} from './actionTypes';
