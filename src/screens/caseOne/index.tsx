@@ -23,6 +23,7 @@ export const QOne: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    padding: appPadding,
   },
   text: {
     color: colors.primary,
